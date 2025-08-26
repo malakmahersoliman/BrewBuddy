@@ -1,4 +1,4 @@
-package com.example.brewbuddy.ui
+package com.example.brewbuddy.presentation
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

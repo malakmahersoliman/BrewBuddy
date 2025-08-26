@@ -7,10 +7,8 @@ import javax.inject.Inject
 
 class CoffeeRepoImpl @Inject constructor(
     private val api: ApiManager ) : CoffeeRepo {
-    override suspend fun getColdCoffee(): List<Coffee> {
+    override suspend fun getColdCoffee()= api.getWebServices().getIcedCoffee()
 
-        return api.getWebServices().getIcedCoffee()
-
-    }
+    override suspend fun getHotCoffee() = api.getWebServices().getHotCoffee()
 
 }

@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="select_bt">#834D1E</color>
+    <color name="unselect_bt">#FCF2D9</color>
 </resources>

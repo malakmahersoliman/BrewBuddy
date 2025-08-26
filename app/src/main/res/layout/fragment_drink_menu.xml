@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCF2D9"
+    android:padding="16dp">
+    <TextView
+        android:id="@+id/tvIngredients"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:textColor="#834D1E"
+        android:text="What would you \n like to drink today?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="321dp"
+        android:layout_height="36dp"
+        android:background="@drawable/search_bk"
+        android:queryHint="Search..."
+        android:iconifiedByDefault="false"
+        android:layout_margin="8dp"/>
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="32dp"
+     >
+
+        <Button
+            android:id="@+id/btnCold"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Cold"
+            android:textSize="15sp"
+            android:background="@drawable/btn_left"
+            android:textColor="#834D1E"
+            />
+
+        <Button
+            android:id="@+id/btnHot"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Hot"
+            android:textSize="15sp"
+            android:background="@drawable/btn_right"
+            android:textColor="#834D1E"
+           />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/coffee_item"
+        android:layout_height="match_parent"/>
+</LinearLayout>
