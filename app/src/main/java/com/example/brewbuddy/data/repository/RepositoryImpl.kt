@@ -1,4 +1,16 @@
 package com.example.brewbuddy.data.repository
 
-class RepositoryImpl {
+import com.example.brewbuddy.data.api.ApiManager
+import com.example.brewbuddy.data.entities.Coffee
+import com.example.brewbuddy.domain.repo.CoffeeRepo
+import javax.inject.Inject
+
+class CoffeeRepoImpl @Inject constructor(
+    private val api: ApiManager ) : CoffeeRepo {
+    override suspend fun getColdCoffee(): List<Coffee> {
+
+        return api.getWebServices().getIcedCoffee()
+
+    }
+
 }
