@@ -1,14 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.BrewBuddy" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base Light Theme -->
+    <style name="Base.Theme.BrewBuddy" parent="Theme.Material3.Light.NoActionBar">
+        <!-- App Colors -->
+        <item name="colorPrimary">@color/md_primary</item>
+        <item name="colorSecondary">@color/md_secondary</item>
+
+        <!-- Backgrounds -->
+        <item name="android:colorBackground">@color/md_surface</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+
+        <!-- System Bars -->
+        <item name="android:statusBarColor">@color/md_primary</item>
+        <item name="android:navigationBarColor">@color/md_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
+    <!-- Actual App Theme -->
     <style name="Theme.BrewBuddy" parent="Base.Theme.BrewBuddy" />
-    <style name="RoundedImageView">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">25%</item>
-    </style>
 
 </resources>

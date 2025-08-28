@@ -4,10 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.brewbuddy.data.room.FavoriteDao
+import com.example.brewbuddy.data.room.FavoriteEntity
 
-@Database(entities = [CoffeeEntity::class], version = 1)
+@Database(
+    entities = [CoffeeEntity::class, FavoriteEntity::class],
+    version = 2,
+    exportSchema = false
+)
 abstract class CoffeeDatabase : RoomDatabase() {
     abstract fun coffeeDao(): CoffeeDao
+    abstract fun favoriteDao(): FavoriteDao
 
     companion object {
         @Volatile

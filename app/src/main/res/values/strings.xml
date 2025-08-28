@@ -1,5 +1,36 @@
 <resources>
+    <!-- App Name -->
     <string name="app_name">BrewBuddy</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Placeholder / Debug -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Bottom Navigation -->
+    <string name="tab_home">Home</string>
+    <string name="tab_menu">Menu</string>
+    <string name="tab_favorites">Favorites</string>
+    <string name="tab_orders">Orders</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_drink_image">Drink image</string>
+    <string name="cd_favorite">Favorite</string>
+    <string name="cd_unfavorite">Unfavorite</string>
+    <string name="cd_remove_favorite">Remove from favorites</string>
+    <string name="cd_notifications">Notifications</string>
+
+    <!-- Empty states -->
+    <!-- Favorites -->
+    <string name="favorites_empty_title">No favorites yet</string>
+    <string name="favorites_empty_sub">Tap the heart on drinks to save them here.</string>
+
+    <!-- Menu -->
+    <string name="menu_empty_title">No menu items available</string>
+    <string name="menu_empty_sub">Check back later for available items.</string>
+
+    <!-- Orders -->
+    <string name="orders_empty_title">No orders yet</string>
+    <string name="orders_empty_sub">Your orders will appear here once placed.</string>
+
+    <!-- Details -->
+    <string name="details_placeholder">Details coming soon.</string>
 </resources>

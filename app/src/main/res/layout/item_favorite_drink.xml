@@ -1,0 +1,60 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Drink Image -->
+        <ImageView
+            android:id="@+id/drinkImage"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_image_bg"/>
+
+        <!-- Drink Name -->
+        <TextView
+            android:id="@+id/drinkName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/drinkImage"
+            android:layout_margin="8dp"
+            android:text="Drink Name"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"/>
+
+        <!-- Drink Price -->
+        <TextView
+            android:id="@+id/drinkPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/drinkImage"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Rp 24.000"
+            android:textColor="@color/brown_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <!-- Favorite Button -->
+        <ImageButton
+            android:id="@+id/removeFavorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignBottom="@id/drinkPrice"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_favorite_filled"
+            android:tint="@color/red"
+            android:contentDescription="@string/cd_remove_favorite"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

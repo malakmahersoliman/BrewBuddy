@@ -1,21 +1,66 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# =========================================
+# General
+# =========================================
+# Preserve line numbers for better stack traces
+-keepattributes SourceFile,LineNumberTable
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Hide original source file names
+-renamesourcefileattribute SourceFile
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Keep Kotlin metadata (needed for reflection)
+-keepclassmembers class kotlin.Metadata { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# =========================================
+# Hilt / Dagger
+# =========================================
+-keep class dagger.hilt.** { *; }
+-keep class * extends dagger.hilt.internal.GeneratedComponent {}
+-keep class * extends dagger.hilt.android.internal.lifecycle.HiltViewModelFactory {}
+-keep class com.example.brewbuddy.** { *; }
+
+# =========================================
+# Room
+# =========================================
+-keep class androidx.room.** { *; }
+-keep @androidx.room.Entity class * { *; }
+-keep class * extends androidx.room.RoomDatabase
+
+# =========================================
+# Coroutines
+# =========================================
+-keepclassmembers class kotlinx.coroutines.debug.* { *; }
+
+# =========================================
+# Retrofit / Gson
+# =========================================
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+
+# Keep Retrofit interfaces (annotations used via reflection)
+-keepattributes Signature
+-keepattributes *Annotation*
+
+# Keep model classes used by Gson (reflection based)
+-keep class com.example.brewbuddy.model.** { *; }
+
+# =========================================
+# Glide
+# =========================================
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.AppGlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** { *; }
+
+# Needed for Glide annotations
+-keep @com.bumptech.glide.annotation.GlideModule class *
+-keep @com.bumptech.glide.annotation.GlideExtension class *
+-keepclasseswithmembers class * {
+    @com.bumptech.glide.annotation.GlideOption <methods>;
+}
+-keepclasseswithmembers class * {
+    @com.bumptech.glide.annotation.GlideType <methods>;
+}
+
+# =========================================
+# OkHttp
+# =========================================
+-dontwarn okhttp3.**
