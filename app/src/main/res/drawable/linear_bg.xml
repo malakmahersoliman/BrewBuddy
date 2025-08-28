@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- الخلفية -->
+    <solid android:color="@color/unselect_bt" />
+
+    <!-- البوردر -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/select_bt" />
+
+    <!-- زوايا مدورة -->
+    <corners android:radius="12dp" />
+</shape>

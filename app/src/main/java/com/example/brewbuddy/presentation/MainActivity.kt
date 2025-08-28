@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.brewbuddy.R
+import com.example.brewbuddy.presentation.fragments.drinks.DrinkMenuFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
