@@ -38,7 +38,8 @@ class DrinkMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        db = CoffeeDatabase.Companion.getDatabase(requireContext())
+
+        db = CoffeeDatabase.getDatabase(requireContext())
 
         adapter = CoffeeAdapter(emptyList()) { coffee ->
             val entity = CoffeeEntity(

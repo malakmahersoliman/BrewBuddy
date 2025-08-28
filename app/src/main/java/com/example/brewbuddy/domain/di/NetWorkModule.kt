@@ -15,14 +15,16 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
     @Provides
+    @Singleton
     fun provideWebServices(retrofit: Retrofit): WebServices {
         return retrofit.create(WebServices::class.java)
     }
 
-
     @Provides
-    fun provideRetroFit(
+    @Singleton
+    fun provideRetrofit(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
@@ -33,25 +35,21 @@ object NetworkModule {
             .build()
     }
 
-    @Module
-    @InstallIn(SingletonComponent::class)
-    object ApiModule {
-
-        @Provides
-        @Singleton
-        fun provideApiManager(): ApiManager = ApiManager
-    }
+    @Provides
+    @Singleton
+    fun provideApiManager(): ApiManager = ApiManager
 
     @Provides
+    @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 
-
     @Provides
-    fun getOkHttpClient(): OkHttpClient {
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client: OkHttpClient = OkHttpClient.Builder()
+        return OkHttpClient.Builder()
             .addInterceptor(logging)
             .build()
-        return client
-    }}
+    }
+}
