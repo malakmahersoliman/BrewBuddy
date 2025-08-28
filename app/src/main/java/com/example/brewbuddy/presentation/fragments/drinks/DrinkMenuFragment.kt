@@ -99,10 +99,15 @@ class DrinkMenuFragment : Fragment() {
     private fun highlightButton(isCold: Boolean) {
         if (isCold) {
             binding.btnCold.setBackgroundColor(requireContext().getColor(R.color.select_bt))
+            binding.btnCold.setTextColor(requireContext().getColor(R.color.unselect_bt))
             binding.btnHot.setBackgroundColor(requireContext().getColor(R.color.unselect_bt))
+            binding.btnHot.setTextColor(requireContext().getColor(R.color.select_bt))
         } else {
             binding.btnHot.setBackgroundColor(requireContext().getColor(R.color.select_bt))
+            binding.btnHot.setTextColor(requireContext().getColor(R.color.unselect_bt))
+
             binding.btnCold.setBackgroundColor(requireContext().getColor(R.color.unselect_bt))
+            binding.btnCold.setTextColor(requireContext().getColor(R.color.select_bt))
         }
     }
 
