@@ -1,4 +1,4 @@
-package com.example.brewbuddy.presentation.fragments.drinks
+package com.example.brewbuddy.presentation.drinks
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

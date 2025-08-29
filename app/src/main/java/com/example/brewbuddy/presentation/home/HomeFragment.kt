@@ -1,4 +1,4 @@
-package com.example.brewbuddy.presentation.fragments.home
+package com.example.brewbuddy.presentation.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

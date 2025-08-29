@@ -6,12 +6,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.brewbuddy.presentation.fragments.home.HomeFragment"
+        android:name="com.example.brewbuddy.presentation.home.HomeFragment"
         android:label="@string/tab_home" />
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.brewbuddy.presentation.fragments.drinks.DrinkMenuFragment"
+        android:name="com.example.brewbuddy.presentation.drinks.DrinkMenuFragment"
         android:label="@string/tab_menu" />
 
     <fragment
