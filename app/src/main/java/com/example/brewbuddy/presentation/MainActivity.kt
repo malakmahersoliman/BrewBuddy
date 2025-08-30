@@ -1,13 +1,12 @@
 package com.example.brewbuddy.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.brewbuddy.R
 import com.example.brewbuddy.core.navigation.setupWithNavControllerPreservingState
 import com.example.brewbuddy.databinding.ActivityMainBinding
@@ -62,16 +61,24 @@ class MainActivity : AppCompatActivity() {
     // ✅ Update toolbar based on current page
     private fun updateToolbarForDestination(destinationId: Int) {
         when (destinationId) {
+            R.id.onboardingFragment -> {
+                // Hide toolbar on onboarding screen
+                binding.toolbar.root.visibility = View.GONE  // ← Access .root
+            }
             R.id.homeFragment -> {
+                binding.toolbar.root.visibility = View.VISIBLE
                 ToolbarManager.setCustomGreeting(this, com.example.brewbuddy.data.local.prefs.Prefs.userName) // Or get from user data
             }
             R.id.menuFragment -> {
+                binding.toolbar.root.visibility = View.VISIBLE
                 ToolbarManager.updateToolbarTitle(this, "What would you like to drink today?")
             }
             R.id.ordersFragment -> {
+                binding.toolbar.root.visibility = View.VISIBLE
                 ToolbarManager.updateToolbarTitle(this, "Your orders")
             }
             R.id.favoritesFragment -> {
+                binding.toolbar.root.visibility = View.VISIBLE
                 ToolbarManager.updateToolbarTitle(this, "Your favorite drinks to lighten up your day")
             }
         }

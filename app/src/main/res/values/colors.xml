@@ -36,6 +36,7 @@
     <color name="brown_medium">#6D4C41</color>
     <color name="brown">#795548</color>
     <color name="brown_light">#A1887F</color>
+    <color name="coffee_cream">#FCF2D9</color>
 
     <!-- Button States -->
     <color name="select_bt">#834D1E</color>
