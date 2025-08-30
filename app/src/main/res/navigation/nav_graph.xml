@@ -2,7 +2,29 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/onboardingFragment">
+
+    <!-- New: welcome splash -->
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.brewbuddy.presentation.onboarding.OnboardingFragment"
+        android:label="Welcome">
+        <action
+            android:id="@+id/action_onboarding_to_enterName"
+            app:destination="@id/enterNameFragment" />
+    </fragment>
+
+    <!-- New: enter name -->
+    <fragment
+        android:id="@+id/enterNameFragment"
+        android:name="com.example.brewbuddy.presentation.onboarding.EnterNameFragment"
+        android:label="@string/enter_name">
+        <action
+            android:id="@+id/action_enterName_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"

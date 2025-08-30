@@ -1,9 +1,11 @@
 package com.example.brewbuddy.domain.di
 
+import com.example.brewbuddy.data.repository.UserRepositoryImpl
 import com.example.brewbuddy.data.repository.CatalogRepositoryImpl
 import com.example.brewbuddy.data.repository.CoffeeRepoImpl
 import com.example.brewbuddy.data.repository.OrderRepositoryImpl
 import com.example.brewbuddy.data.repository.FavoritesRepositoryImpl
+import com.example.brewbuddy.domain.repository.UserRepository
 import com.example.brewbuddy.domain.repository.CoffeeRepository
 import com.example.brewbuddy.domain.repository.CatalogRepository
 import com.example.brewbuddy.domain.repository.OrderRepository
@@ -17,6 +19,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindUserRepo(impl: UserRepositoryImpl): UserRepository
 
     @Binds
     @Singleton

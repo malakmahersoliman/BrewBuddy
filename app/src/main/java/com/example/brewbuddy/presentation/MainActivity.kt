@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.brewbuddy.R
 import com.example.brewbuddy.core.navigation.setupWithNavControllerPreservingState
 import com.example.brewbuddy.databinding.ActivityMainBinding
+import com.example.brewbuddy.domain.usecase.GetUserNameUseCase
 import com.example.brewbuddy.utils.ToolbarManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,9 +20,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        com.example.brewbuddy.data.local.prefs.Prefs.userName = null //this clear the name
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,6 +41,15 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
+        if (savedInstanceState == null) {
+            val graph = navController.navInflater.inflate(R.navigation.nav_graph)
+            graph.setStartDestination(
+                if (com.example.brewbuddy.data.local.prefs.Prefs.isOnboarded)
+                    R.id.homeFragment else R.id.onboardingFragment
+            )
+            navController.graph = graph
+        }
+
         // Connect BottomNavigationView with NavController
         binding.bottomNavigation.setupWithNavControllerPreservingState(navController)
 
@@ -50,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateToolbarForDestination(destinationId: Int) {
         when (destinationId) {
             R.id.homeFragment -> {
-                ToolbarManager.setCustomGreeting(this, "John Smith") // Or get from user data
+                ToolbarManager.setCustomGreeting(this, com.example.brewbuddy.data.local.prefs.Prefs.userName) // Or get from user data
             }
             R.id.menuFragment -> {
                 ToolbarManager.updateToolbarTitle(this, "What would you like to drink today?")

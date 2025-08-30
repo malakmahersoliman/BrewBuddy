@@ -1,6 +1,4 @@
-package com.example.brewbuddy.data.local
-
-
+package com.example.brewbuddy.data.local.prefs
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -35,4 +35,14 @@
 
     <!-- Details -->
     <string name="details_placeholder">Details coming soon.</string>
+    <string name="enter_name" />
+    <string name="c_o_c_h_o_c">C o / C h o c</string>
+    <string name="a_way_to_enjoy_bitter_and_sweet_of_life">A way to enjoy bitter and sweet of life</string>
+    <string name="please_enter_your_name">Please Enter Your Name:</string>
+    <string name="john_smith">John Smith</string>
+    <string name="beansimage">beansimage</string>
+    <string name="chocolate">chocolate</string>
+    <string name="upperimage">upperimage</string>
+    <string name="btn_continue">Continue</string>
+    <string name="hi">Hi, —</string>
 </resources>
