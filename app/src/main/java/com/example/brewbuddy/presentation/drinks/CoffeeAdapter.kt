@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.brewbuddy.data.entities.Coffee
+import com.example.brewbuddy.domain.model.Coffee
 import com.example.brewbuddy.databinding.CoffeeItemBinding
 
 class CoffeeAdapter(

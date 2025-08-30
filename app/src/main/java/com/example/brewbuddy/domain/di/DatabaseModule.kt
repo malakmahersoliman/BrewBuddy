@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.brewbuddy.data.db.CoffeeDatabase
 import com.example.brewbuddy.data.db.CoffeeDao
+import com.example.brewbuddy.data.orderdb.OrderDao
 import com.example.brewbuddy.data.room.FavoriteDao
 import dagger.Module
 import dagger.Provides
@@ -33,4 +34,6 @@ object DatabaseModule {
 
     @Provides
     fun provideFavoriteDao(db: CoffeeDatabase): FavoriteDao = db.favoriteDao()
+    @Provides
+    fun provideOrderDao(db: CoffeeDatabase): OrderDao = db.orderDao()
 }
