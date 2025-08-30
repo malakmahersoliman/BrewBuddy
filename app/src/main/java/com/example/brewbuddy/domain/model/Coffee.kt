@@ -1,4 +1,4 @@
-package com.example.brewbuddy.data.entities
+package com.example.brewbuddy.domain.model
 
 data class Coffee(
     val id: Int,

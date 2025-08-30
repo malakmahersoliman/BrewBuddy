@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.brewbuddy.data.entities.Coffee
+import com.example.brewbuddy.domain.model.Coffee
 import com.example.brewbuddy.domain.usecase.GetColdCoffeeUseCase
 import com.example.brewbuddy.domain.usecase.GetHotCoffeeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,17 +20,14 @@ class CoffeeViewModel @Inject constructor(
     private val _coldList = MutableLiveData<List<Coffee>>()
     private val _hotList = MutableLiveData<List<Coffee>>()
     private val _coffeeList = MutableLiveData<List<Coffee>>()
-
-    val coldList: LiveData<List<Coffee>> = _coldList
-    val hotList: LiveData<List<Coffee>> = _hotList
     val coffeeList: LiveData<List<Coffee>> = _coffeeList
 
     private var currentType: CoffeeType = CoffeeType.HOT
 
     fun fetchCoffee() {
         viewModelScope.launch {
-            val hot = getHotCoffeeUseCase().map { it.apply { price = "Rp ${(20000..30000).random()}" } }
-            val cold = getColdCoffeeUseCase().map { it.apply { price = "Rp ${(20000..30000).random()}" } }
+            val hot = getHotCoffeeUseCase().map { it.apply { price = "Rp ${(200..500).random()}" } }
+            val cold = getColdCoffeeUseCase().map { it.apply { price = "Rp ${(200..500).random()}" } }
 
             _hotList.value = hot
             _coldList.value = cold
