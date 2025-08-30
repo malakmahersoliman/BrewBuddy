@@ -1,0 +1,57 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:paddingHorizontal="35dp"
+    android:paddingVertical="10dp">
+
+    <!-- Greeting Text -->
+    <TextView
+        android:id="@+id/tvGreeting"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:text=""
+        android:textColor="@color/coffee"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        app:fontFamily="@font/inter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivNotification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingPrefix" />
+
+    <!-- Notification icon -->
+    <ImageButton
+        android:id="@+id/ivNotification"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/cd_notifications"
+        android:src="@drawable/ic_notifications"
+        android:background="@color/background"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivMenu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvGreeting"
+        app:tint="#6B3F19" />
+
+    <!-- Menu (hamburger) icon -->
+    <ImageButton
+        android:id="@+id/ivMenu"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/menu"
+        android:src="@drawable/ic_menu_hamburger"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivNotification"
+        app:tint="#6B3F19" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,5 +37,12 @@
     <!-- Button States -->
     <color name="select_bt">#834D1E</color>
     <color name="unselect_bt">#FCF2D9</color>
+    
+    <!-- Home -->
+    <color name="coffee">#834D1E</color>
+    <color name="background">#F8E3B6</color>
+    <color name="bestSeller">#FCF2D9</color>
+    <color name="recommendation">#F8E3B6</color>
+    <color name="inTheShop">#FDFACF</color>
 
 </resources>

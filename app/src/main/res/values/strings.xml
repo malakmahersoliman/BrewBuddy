@@ -17,6 +17,8 @@
     <string name="cd_unfavorite">Unfavorite</string>
     <string name="cd_remove_favorite">Remove from favorites</string>
     <string name="cd_notifications">Notifications</string>
+    <string name="cd_bestSeller">Best Seller</string>
+    <string name="menu">Menu</string>
 
     <!-- Empty states -->
     <!-- Favorites -->

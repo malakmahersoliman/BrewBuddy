@@ -60,30 +60,30 @@ class DrinkMenuFragment : Fragment() {
 
         viewModel.fetchCoffee()
 
-        viewModel.coldList.observe(viewLifecycleOwner) { adapter.updateList(it) }
+        viewModel.coffeeList.observe(viewLifecycleOwner) { adapter.updateList(it) }
 
         highlightButton(isCold = true)
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                filterList(query)
+                viewModel.search(query ?: "")
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                filterList(newText)
+                viewModel.search(newText ?: "")
                 return true
             }
         })
 
         binding.btnCold.setOnClickListener {
             highlightButton(isCold = true)
-            viewModel.coldList.value?.let { adapter.updateList(it) }
+            viewModel.setCoffeeType(CoffeeViewModel.CoffeeType.COLD)
         }
 
         binding.btnHot.setOnClickListener {
             highlightButton(isCold = false)
-            viewModel.hotList.value?.let { adapter.updateList(it) }
+            viewModel.setCoffeeType(CoffeeViewModel.CoffeeType.HOT)
         }
     }
 
