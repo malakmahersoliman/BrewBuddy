@@ -1,4 +1,4 @@
-package com.example.brewbuddy.data.local
+package com.example.brewbuddy.data.local.prefs
 
 
 

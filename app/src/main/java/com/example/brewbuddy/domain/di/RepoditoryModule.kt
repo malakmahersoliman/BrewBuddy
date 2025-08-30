@@ -3,7 +3,9 @@ package com.example.brewbuddy.domain.di
 import com.example.brewbuddy.data.repository.CatalogRepositoryImpl
 import com.example.brewbuddy.data.repository.CoffeeRepoImpl
 import com.example.brewbuddy.data.repository.FavoritesRepositoryImpl
+import com.example.brewbuddy.data.repository.UserRepositoryImpl
 import com.example.brewbuddy.domain.repo.CoffeeRepo
+import com.example.brewbuddy.domain.repo.UserRepo
 import com.example.brewbuddy.domain.repository.CatalogRepository
 import com.example.brewbuddy.domain.repository.FavoritesRepository
 import dagger.Binds
@@ -33,4 +35,7 @@ abstract class RepositoryModule {
     abstract fun bindFavoritesRepository(
         repoImpl: FavoritesRepositoryImpl
     ): FavoritesRepository
+    @Binds
+    @Singleton
+    abstract fun bindUserRepo(impl: UserRepositoryImpl): UserRepo
 }

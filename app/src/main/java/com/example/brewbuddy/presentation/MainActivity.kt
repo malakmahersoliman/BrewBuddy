@@ -1,6 +1,7 @@
 package com.example.brewbuddy.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        com.example.brewbuddy.data.local.prefs.Prefs.userName = null //this clear the name
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
@@ -33,20 +36,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         // ✅ Get NavController safely
+// Get NavController
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
+        if (savedInstanceState == null) {
+            val graph = navController.navInflater.inflate(R.navigation.nav_graph)
+            graph.setStartDestination(
+                if (com.example.brewbuddy.data.local.prefs.Prefs.isOnboarded)
+                    R.id.homeFragment else R.id.onboardingFragment
+            )
+            navController.graph = graph
+        }
+
         // ✅ set Toolbar as ActionBar
-        setSupportActionBar(binding.toolbar)
+                setSupportActionBar(binding.toolbar)
 
         // ✅ Make Toolbar titles follow nav_graph labels
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.menuFragment, R.id.favoritesFragment, R.id.ordersFragment)
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+                val appBarConfiguration = AppBarConfiguration(
+                    setOf(R.id.homeFragment, R.id.menuFragment, R.id.favoritesFragment, R.id.ordersFragment)
+                )
+                setupActionBarWithNavController(navController, appBarConfiguration)
 
         // ✅ Connect BottomNavigationView with NavController
-        binding.bottomNavigation.setupWithNavControllerPreservingState(navController)
+                binding.bottomNavigation.setupWithNavControllerPreservingState(navController)
+
+        // ✅ Hide Toolbar/BottomNav on onboarding screens
+                navController.addOnDestinationChangedListener { _, destination, _ ->
+                    val showChrome = destination.id in setOf(
+                        R.id.homeFragment, R.id.menuFragment, R.id.favoritesFragment, R.id.ordersFragment
+                    )
+                    binding.toolbar.visibility = if (showChrome) View.VISIBLE else View.GONE
+                    binding.bottomNavigation.visibility = if (showChrome) View.VISIBLE else View.GONE
+        }
+
     }
 }
