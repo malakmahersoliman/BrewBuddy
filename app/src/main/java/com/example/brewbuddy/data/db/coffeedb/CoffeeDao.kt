@@ -1,10 +1,9 @@
-package com.example.brewbuddy.data.db
+package com.example.brewbuddy.data.db.coffeedb
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.brewbuddy.data.db.CoffeeEntity
 
 @Dao
 interface CoffeeDao {

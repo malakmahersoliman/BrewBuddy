@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewbuddy.R
 import com.example.brewbuddy.data.db.CoffeeDatabase
-import com.example.brewbuddy.data.db.CoffeeEntity
+import com.example.brewbuddy.data.db.coffeedb.CoffeeEntity
 import com.example.brewbuddy.databinding.FragmentDrinkMenuBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

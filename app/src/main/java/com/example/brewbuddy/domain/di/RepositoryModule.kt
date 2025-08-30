@@ -2,9 +2,11 @@ package com.example.brewbuddy.domain.di
 
 import com.example.brewbuddy.data.repository.CatalogRepositoryImpl
 import com.example.brewbuddy.data.repository.CoffeeRepoImpl
+import com.example.brewbuddy.data.repository.OrderRepositoryImpl
 import com.example.brewbuddy.data.repository.FavoritesRepositoryImpl
 import com.example.brewbuddy.domain.repository.CoffeeRepository
 import com.example.brewbuddy.domain.repository.CatalogRepository
+import com.example.brewbuddy.domain.repository.OrderRepository
 import com.example.brewbuddy.domain.repository.FavoritesRepository
 import dagger.Binds
 import dagger.Module
@@ -27,6 +29,12 @@ abstract class RepositoryModule {
     abstract fun bindCatalogRepository(
         impl: CatalogRepositoryImpl
     ): CatalogRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindOrderRepository(
+        impl: OrderRepositoryImpl
+    ): OrderRepository
 
     @Binds
     @Singleton
