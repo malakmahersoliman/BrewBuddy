@@ -24,16 +24,6 @@
             app:srcCompat="@drawable/sample_product_image"
             app:shapeAppearanceOverlay="@style/RoundedImage8" />
 
-        <!--        <ImageView-->
-<!--            android:id="@+id/drinkImage"-->
-<!--            android:layout_width="75dp"-->
-<!--            android:layout_height="75dp"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            android:src="@drawable/sample_product_image"-->
-<!--            android:background="@drawable/image_background"-->
-<!--            />-->
 
 
 
@@ -92,3 +82,13 @@
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
+    <!--        <ImageView-->
+    <!--            android:id="@+id/drinkImage"-->
+    <!--            android:layout_width="75dp"-->
+    <!--            android:layout_height="75dp"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            android:src="@drawable/sample_product_image"-->
+    <!--            android:background="@drawable/image_background"-->
+    <!--            />-->
