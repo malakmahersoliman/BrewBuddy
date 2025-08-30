@@ -1,10 +1,11 @@
 package com.example.brewbuddy.domain.repository
 
 import com.example.brewbuddy.data.orderdb.OrderEntity
+import com.example.brewbuddy.domain.model.Order
 import kotlinx.coroutines.flow.Flow
 
 interface OrderRepository {
-    fun getAllOrders(): Flow<List<OrderEntity>>
-    suspend fun insertOrder(order: OrderEntity)
-    suspend fun deleteOrder(order: OrderEntity)
+    fun getAllOrders(): Flow<List<Order>>
+    suspend fun insertOrder(order: Order)
+    suspend fun deleteOrder(order: Order)
 }
