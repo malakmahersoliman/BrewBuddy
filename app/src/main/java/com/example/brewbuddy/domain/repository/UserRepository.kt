@@ -1,6 +1,6 @@
-package com.example.brewbuddy.domain.repo
+package com.example.brewbuddy.domain.repository
 
-interface UserRepo {
+interface UserRepository {
     fun saveName(name: String)
     fun getName(): String?
     fun hasName(): Boolean

@@ -1,18 +1,15 @@
 package com.example.brewbuddy.domain.di
 
-import com.example.brewbuddy.data.repository.CatalogRepositoryImpl
-import com.example.brewbuddy.data.repository.CoffeeRepoImpl
-import com.example.brewbuddy.data.repository.FavoritesRepositoryImpl
-
 import com.example.brewbuddy.data.repository.UserRepositoryImpl
-
+import com.example.brewbuddy.data.repository.CatalogRepositoryImpl
+import com.example.brewbuddy.data.repository.CoffeeRepositoryImpl
 import com.example.brewbuddy.data.repository.OrderRepositoryImpl
-
-import com.example.brewbuddy.domain.repo.CoffeeRepo
-import com.example.brewbuddy.domain.repo.UserRepo
+import com.example.brewbuddy.data.repository.FavoritesRepositoryImpl
+import com.example.brewbuddy.domain.repository.UserRepository
+import com.example.brewbuddy.domain.repository.CoffeeRepository
 import com.example.brewbuddy.domain.repository.CatalogRepository
-import com.example.brewbuddy.domain.repository.FavoritesRepository
 import com.example.brewbuddy.domain.repository.OrderRepository
+import com.example.brewbuddy.domain.repository.FavoritesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -25,9 +22,13 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindCoffeeRepo(
-        repoImpl: CoffeeRepoImpl
-    ): CoffeeRepo
+    abstract fun bindUserRepository(impl: UserRepositoryImpl): UserRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCoffeeRepository(
+        repoImpl: CoffeeRepositoryImpl
+    ): CoffeeRepository
 
     @Binds
     @Singleton
@@ -37,14 +38,13 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindFavoritesRepository(
-        repoImpl: FavoritesRepositoryImpl
-    ): FavoritesRepository
-    @Binds
-    @Singleton
-    abstract fun bindUserRepo(impl: UserRepositoryImpl): UserRepo
-
     abstract fun bindOrderRepository(
         impl: OrderRepositoryImpl
     ): OrderRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindFavoritesRepository(
+        repoImpl: FavoritesRepositoryImpl
+    ): FavoritesRepository
 }

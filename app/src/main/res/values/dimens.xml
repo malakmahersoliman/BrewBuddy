@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Padding -->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Layout -->
+    <dimen name="list_item_height_min">72dp</dimen>
+    <dimen name="image_size">64dp</dimen>
+    <dimen name="icon_touch">48dp</dimen>
+
+    <!-- Corners & Elevation -->
+    <dimen name="corner_radius">12dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+
+    <!-- Order Item Dimensions -->
+    <dimen name="order_item_margin_bottom">12dp</dimen>
+    <dimen name="order_item_corner_radius">12dp</dimen>
+    <dimen name="order_item_elevation">2dp</dimen>
+    <dimen name="order_item_padding">16dp</dimen>
+
+    <!-- Product Image -->
+    <dimen name="product_image_size">60dp</dimen>
+</resources>

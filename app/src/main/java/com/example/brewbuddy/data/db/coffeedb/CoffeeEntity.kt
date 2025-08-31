@@ -1,4 +1,4 @@
-package com.example.brewbuddy.data.db
+package com.example.brewbuddy.data.db.coffeedb
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

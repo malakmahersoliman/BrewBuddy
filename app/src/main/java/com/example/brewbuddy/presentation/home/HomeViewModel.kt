@@ -2,50 +2,69 @@ package com.example.brewbuddy.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.brewbuddy.domain.model.Drink
-import com.example.brewbuddy.domain.repository.CatalogRepository
-import com.example.brewbuddy.domain.repository.FavoritesRepository
-import com.example.brewbuddy.domain.usecase.GetUserNameUseCase   // <-- add
-import com.example.brewbuddy.presentation.common.adapter.UiDrink
+import com.example.brewbuddy.domain.model.Coffee
+import com.example.brewbuddy.domain.usecase.GetRecommendationsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val catalogRepository: CatalogRepository,
-    private val favoritesRepository: FavoritesRepository,
-    private val getUserName: GetUserNameUseCase                  // <-- add
+    private val getRecommendationsUseCase: GetRecommendationsUseCase
 ) : ViewModel() {
 
-    // Greeting (uses your SharedPrefs-backed use case)
-    private val _greeting = MutableStateFlow("Hi, —")
-    val greeting: StateFlow<String> = _greeting
+    private val _recommendations = MutableStateFlow<List<Coffee>>(emptyList())
+    val recommendations: StateFlow<List<Coffee>> = _recommendations.asStateFlow()
+
+    private val _bestSeller = MutableStateFlow<Coffee?>(null)
+    val bestSeller: StateFlow<Coffee?> = _bestSeller.asStateFlow()
+
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
+
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error.asStateFlow()
 
     init {
-        val name = getUserName() ?: "Friend"
-        _greeting.value = "Hi, $name 👋"
+        loadHomeData()
     }
 
-    // Existing items stream (unchanged)
-    val items: StateFlow<List<UiDrink>> =
-        combine(
-            catalogRepository.getCatalog(),
-            favoritesRepository.favorites     // Flow<List<Favorite>>
-        ) { catalog: List<Drink>, favorites ->
-            val favIds = favorites.map { it.id }.toSet()
-            catalog.map { drink -> UiDrink(drink, favIds.contains(drink.id)) }
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = emptyList()
-        )
+    fun loadHomeData() {
+        loadRecommendationsAndBestSeller()
+    }
 
-    fun onToggleFavorite(drink: Drink, shouldFavorite: Boolean) {
+    private fun loadRecommendationsAndBestSeller() {
+        _isLoading.value = true
+        _error.value = null
+
         viewModelScope.launch {
-            if (shouldFavorite) favoritesRepository.add(drink)
-            else favoritesRepository.removeById(drink.id)
+            try {
+                // Get 7 recommendations: 1 for best seller + 6 for the list
+                val allRecommendations = getRecommendationsUseCase(7)
+
+                if (allRecommendations.isNotEmpty()) {
+                    // First item is best seller, rest are recommendations
+                    _bestSeller.value = allRecommendations.first()
+                    _recommendations.value = allRecommendations.drop(1).take(6)
+                } else {
+                    _error.value = "No recommendations available"
+                }
+            } catch (e: Exception) {
+                _error.value = "Failed to load data: ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
         }
+    }
+
+    fun refreshData() {
+        loadHomeData()
+    }
+
+    fun clearError() {
+        _error.value = null
     }
 }

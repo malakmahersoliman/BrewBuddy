@@ -20,6 +20,7 @@ class CoffeeViewModel @Inject constructor(
     private val _coldList = MutableLiveData<List<Coffee>>()
     private val _hotList = MutableLiveData<List<Coffee>>()
     private val _coffeeList = MutableLiveData<List<Coffee>>()
+
     val coffeeList: LiveData<List<Coffee>> = _coffeeList
 
     private var currentType: CoffeeType = CoffeeType.HOT
@@ -39,8 +40,8 @@ class CoffeeViewModel @Inject constructor(
     fun setCoffeeType(type: CoffeeType) {
         currentType = type
         _coffeeList.value = when (type) {
-            CoffeeType.HOT -> _hotList.value
-            CoffeeType.COLD -> _coldList.value
+            CoffeeType.HOT -> _hotList.value ?: emptyList()
+            CoffeeType.COLD -> _coldList.value ?: emptyList()
         }
     }
 

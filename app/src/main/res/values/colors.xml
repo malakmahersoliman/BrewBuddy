@@ -26,17 +26,27 @@
     <color name="bottom_nav_selected">@color/md_primary</color>
 
     <!-- Background -->
-    <color name="beige_light">#F8E3B6</color>
+    <color name="beige_light">#F5E1C8</color>
+    <color name="order_item_background">#FCF2D9</color>
+    <color name="background_cream">#F8E3B6</color>
 
     <!-- Text Colors -->
-    <color name="brown_dark">#4E342E</color>
+<!--    <color name="brown_dark">#4E342E</color>-->
+    <color name="brown_dark">#834D1E</color>
     <color name="brown_medium">#6D4C41</color>
     <color name="brown">#795548</color>
     <color name="brown_light">#A1887F</color>
+    <color name="coffee_cream">#FCF2D9</color>
 
     <!-- Button States -->
     <color name="select_bt">#834D1E</color>
     <color name="unselect_bt">#FCF2D9</color>
+    
+    <!-- Home -->
+    <color name="coffee">#834D1E</color>
+    <color name="background">#F8E3B6</color>
+    <color name="bestSeller">#FCF2D9</color>
+    <color name="recommendation">#F8E3B6</color>
+    <color name="inTheShop">#FDFACF</color>
 
-    <color name="coffee_cream">#FCF2D9</color>  <!-- cream beige -->
 </resources>

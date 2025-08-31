@@ -3,8 +3,8 @@ package com.example.brewbuddy.domain.di
 import android.content.Context
 import androidx.room.Room
 import com.example.brewbuddy.data.db.CoffeeDatabase
-import com.example.brewbuddy.data.db.CoffeeDao
-import com.example.brewbuddy.data.orderdb.OrderDao
+import com.example.brewbuddy.data.db.coffeedb.CoffeeDao
+import com.example.brewbuddy.data.db.orderdb.OrderDao
 import com.example.brewbuddy.data.room.FavoriteDao
 import dagger.Module
 import dagger.Provides
@@ -33,7 +33,8 @@ object DatabaseModule {
     fun provideCoffeeDao(db: CoffeeDatabase): CoffeeDao = db.coffeeDao()
 
     @Provides
-    fun provideFavoriteDao(db: CoffeeDatabase): FavoriteDao = db.favoriteDao()
-    @Provides
     fun provideOrderDao(db: CoffeeDatabase): OrderDao = db.orderDao()
+
+    @Provides
+    fun provideFavoriteDao(db: CoffeeDatabase): FavoriteDao = db.favoriteDao()
 }

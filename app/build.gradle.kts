@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity)
+    implementation(libs.material.v190)
 
     // Navigation Component
     implementation(libs.androidx.navigation.fragment.ktx)
@@ -86,6 +87,9 @@ dependencies {
 
     // Fragment KTX
     implementation("androidx.fragment:fragment-ktx:1.7.1")
+
+    // Palette
+    implementation("androidx.palette:palette:1.0.0")
 
     // Testing
     testImplementation(libs.junit)

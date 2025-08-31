@@ -1,23 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="35dp"
-    android:layout_marginVertical="44dp"
-    tools:context=".presentation.home.HomeFragment">
+    android:fillViewport="true"
+    android:background="@color/background">
 
-    <TextView
-        android:id="@+id/tvGreeting"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hi"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:context=".presentation.home.HomeFragment">
+
+        <!-- Best seller section -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBestSeller"
+            android:layout_width="0dp"
+            android:layout_height="191dp"
+            android:layout_marginVertical="20dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            app:cardBackgroundColor="@color/coffee"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvBestSellerTitle"
+                    android:layout_width="153dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="Best seller of the week"
+                    android:textColor="@color/bestSeller"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/tvBestSellerName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvBestSellerName"
+                    android:layout_width="153dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Iced Coffee Sweet Heaven"
+                    android:textColor="@color/bestSeller"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/cardBestSellerImage"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvBestSellerTitle" />
+
+                <TextView
+                    android:id="@+id/tvMoreInfo"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="More info"
+                    android:textColor="@color/bestSeller"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ibMoreInfo"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!-- More Info icon -->
+                <ImageButton
+                    android:id="@+id/ibMoreInfo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/coffee"
+                    android:contentDescription="Forward"
+                    android:src="@drawable/ic_arrow_forward"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvMoreInfo"
+                    app:tint="@color/bestSeller" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardBestSellerImage"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/ibBestSellerImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/cd_bestSeller"
+                        android:src="@drawable/img_coffee"
+                        android:scaleType="centerCrop"
+                        android:background="@null" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- This week's recommendation section -->
+        <TextView
+            android:id="@+id/tvRecommendation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This week's recommendations"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:textColor="@color/coffee"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            app:fontFamily="@font/inter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardBestSeller" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecommendations"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRecommendation"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_recommendation" />
+
+        <!-- What's in the shop section -->
+        <TextView
+            android:id="@+id/tvInTheShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What's in the shop?"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:textColor="@color/coffee"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            app:fontFamily="@font/inter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvRecommendations" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardInTheShop"
+            android:layout_width="0dp"
+            android:layout_height="191dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            app:cardBackgroundColor="@color/coffee"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvInTheShop">
+
+            <ImageView
+                android:id="@+id/ivInTheShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_lemonade_drinks"
+                android:scaleType="centerCrop"
+                android:contentDescription="Lemonade image" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvNewMenu"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Introducing our new menu"
+                    android:textColor="@color/inTheShop"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDescription" />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="Try our refreshing lemonade, strawberry lemonade, and orange lemonade"
+                    android:textColor="@color/inTheShop"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvNewMenu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
