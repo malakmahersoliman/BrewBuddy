@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewbuddy.R
 import com.example.brewbuddy.data.db.CoffeeDatabase
@@ -60,8 +61,9 @@ class DrinkMenuFragment : Fragment() {
 
         viewModel.fetchCoffee()
 
-        viewModel.coffeeList.observe(viewLifecycleOwner) { adapter.updateList(it) }
-
+        viewModel.coffeeList.observe(viewLifecycleOwner) { list ->
+            adapter.updateList(list ?: emptyList())
+        }
         highlightButton(isCold = true)
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

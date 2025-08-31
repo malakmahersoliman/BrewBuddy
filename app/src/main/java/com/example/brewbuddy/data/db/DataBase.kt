@@ -13,7 +13,7 @@ import com.example.brewbuddy.data.room.FavoriteEntity
 
 @Database(
     entities = [CoffeeEntity::class, FavoriteEntity::class, OrderEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class CoffeeDatabase : RoomDatabase() {
