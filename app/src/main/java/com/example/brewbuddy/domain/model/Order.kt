@@ -6,5 +6,4 @@ data class Order(
     val quantity: Int,
     val date: String,
     val imageUrl: String
-
 )

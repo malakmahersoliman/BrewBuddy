@@ -11,8 +11,6 @@ fun OrderEntity.toDomain(): Order {
         date = this.date,
         imageUrl = this.imageUrl
     )
-
-
 }
 
 fun Order.toEntity(): OrderEntity {
