@@ -35,17 +35,18 @@ class DrinkDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel.loadDrink(args.drinkId)
+        // Use the arguments directly instead of making API call
+        binding.title.text = args.drinkTitle
+        binding.price.text = args.drinkPrice
+        binding.subtitle.text = args.description // Add description to nav args if needed
 
-        viewModel.drink.observe(viewLifecycleOwner) { drink ->
-            binding.title.text = drink.title
-            binding.subtitle.text = drink.description
-            Glide.with(requireContext())
-                .load(drink.image)
-                .placeholder(android.R.drawable.ic_menu_report_image)
-                .centerCrop()
-                .into(binding.drinkImage)
-        }
+        Glide.with(requireContext())
+            .load(args.image)
+            .placeholder(android.R.drawable.ic_menu_report_image)
+            .centerCrop()
+            .into(binding.drinkImage)
+
+        viewModel.checkFavoriteStatus(args.drinkId)
 
         viewModel.quantity.observe(viewLifecycleOwner) { qty ->
             binding.Qty.text = qty.toString()

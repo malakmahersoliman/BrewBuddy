@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.brewbuddy.data.api.WebServices
-import com.example.brewbuddy.domain.model.Drink
 import com.example.brewbuddy.domain.repository.FavoritesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,26 +11,21 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DrinkDetailsViewModel @Inject constructor(
-    private val apiService: WebServices,
     private val repo: FavoritesRepository
 ) : ViewModel() {
 
-    private val _drink = MutableLiveData<Drink>()
-    val drink: LiveData<Drink> = _drink
-
     private val _quantity = MutableLiveData(1)
     val quantity: LiveData<Int> = _quantity
+
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> get() = _isFavorite
 
-    fun loadDrink(drinkId: Int) {
+    private var currentDrinkId: Int = -1
+
+    fun checkFavoriteStatus(drinkId: Int) {
+        currentDrinkId = drinkId
         viewModelScope.launch {
-            try {
-                val result = apiService.getDrinkById(drinkId)
-                _drink.value = result
-            } catch (e: Exception) {
-                // TODO: handle error (e.g., add _error LiveData if needed)
-            }
+            _isFavorite.value = repo.isFavorite(drinkId)
         }
     }
 
@@ -48,13 +41,12 @@ class DrinkDetailsViewModel @Inject constructor(
         }
     }
     fun toggleFavorite() {
-        val currentDrink = _drink.value ?: return
         viewModelScope.launch {
             if (_isFavorite.value == true) {
-                repo.removeById(currentDrink.id)
+                repo.removeById(currentDrinkId)
                 _isFavorite.value = false
             } else {
-                repo.add(currentDrink)
+                // You'll need to pass the drink data to add to favorites
                 _isFavorite.value = true
             }
         }

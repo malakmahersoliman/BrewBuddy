@@ -145,6 +145,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                  bestSeller.id,
                  bestSeller.title,
                  bestSeller.price,
+                 bestSeller.description,
                  bestSeller.image,
              )
          )

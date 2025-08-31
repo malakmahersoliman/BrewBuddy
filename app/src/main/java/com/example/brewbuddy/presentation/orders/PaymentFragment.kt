@@ -15,7 +15,9 @@ import java.util.Date
 class PaymentFragment : Fragment() {
 
     private val viewModel: PaymentViewModel by viewModels()
+
     private lateinit var binding: FragmentPaymentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,6 +25,7 @@ class PaymentFragment : Fragment() {
         binding = FragmentPaymentBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args = arguments?.let { PaymentFragmentArgs.fromBundle(it) }
