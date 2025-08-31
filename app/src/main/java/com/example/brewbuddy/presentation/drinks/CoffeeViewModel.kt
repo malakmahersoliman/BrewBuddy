@@ -32,7 +32,7 @@ class CoffeeViewModel @Inject constructor(
             _hotList.value = hot
             _coldList.value = cold
 
-            _coffeeList.value = _hotList.value
+            _coffeeList.value = _coldList.value
         }
     }
 
