@@ -153,7 +153,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateToRecommendationDetails(recommendation: Coffee) {
         // Navigate to recommendation details
-        // findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(recommendation.id))
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(
+                recommendation.id,
+                recommendation.title,
+                recommendation.price,
+                recommendation.description,
+                recommendation.image,
+            )
+        )
     }
 
     private fun showError(message: String) {
