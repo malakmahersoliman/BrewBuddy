@@ -6,13 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.brewbuddy.data.api.WebServices
 import com.example.brewbuddy.domain.model.Drink
+import com.example.brewbuddy.domain.repository.FavoritesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DrinkDetailsViewModel @Inject constructor(
-    private val apiService: WebServices
+    private val apiService: WebServices,
+    private val repo: FavoritesRepository
 ) : ViewModel() {
 
     private val _drink = MutableLiveData<Drink>()
@@ -20,6 +22,8 @@ class DrinkDetailsViewModel @Inject constructor(
 
     private val _quantity = MutableLiveData(1)
     val quantity: LiveData<Int> = _quantity
+    private val _isFavorite = MutableLiveData<Boolean>()
+    val isFavorite: LiveData<Boolean> get() = _isFavorite
 
     fun loadDrink(drinkId: Int) {
         viewModelScope.launch {
@@ -43,4 +47,17 @@ class DrinkDetailsViewModel @Inject constructor(
             _quantity.value = current - 1
         }
     }
+    fun toggleFavorite() {
+        val currentDrink = _drink.value ?: return
+        viewModelScope.launch {
+            if (_isFavorite.value == true) {
+                repo.removeById(currentDrink.id)
+                _isFavorite.value = false
+            } else {
+                repo.add(currentDrink)
+                _isFavorite.value = true
+            }
+        }
+    }
+
 }

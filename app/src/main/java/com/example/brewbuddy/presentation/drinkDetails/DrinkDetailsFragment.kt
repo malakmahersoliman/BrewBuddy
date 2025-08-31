@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.brewbuddy.R
 import com.example.brewbuddy.databinding.FragmentDrinkDetailsBinding
 import kotlin.getValue
 class DrinkDetailsFragment : Fragment() {
@@ -45,6 +47,27 @@ class DrinkDetailsFragment : Fragment() {
         binding.plusBtn.setOnClickListener { viewModel.increaseQuantity() }
         binding.minusBtn.setOnClickListener { viewModel.decreaseQuantity() }
         binding.closeBtn.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+
+        viewModel.isFavorite.observe(viewLifecycleOwner) { fav ->
+            if (fav) {
+                binding.favourite.setImageResource(R.drawable.ic_favorite )
+            } else {
+                binding.favourite.setImageResource(R.drawable.ic_favorite_border)
+            }
+        }
+        binding.favourite.setOnClickListener {
+            viewModel.toggleFavorite()
+        }
+binding.btnBuyNow.setOnClickListener {
+    val action = DrinkDetailsFragmentDirections
+        .actionDrinkDetailsFragmentToPaymentFragment(
+            drinkId = args.drinkId,
+            title=args.drinkTitle,
+            quantity=args.drinkQuantity,
+            price = args.drinkPrice,
+        )
+    findNavController().navigate(action)
+}
     }
 
     override fun onDestroyView() {

@@ -38,6 +38,36 @@
         <argument
             android:name="drink_id"
             app:argType="integer" />
+        <argument
+            android:name="drinkTitle"
+            app:argType="string" />
+        <argument
+            android:name="drinkPrice"
+            app:argType="string" />
+        <argument
+            android:name="drinkQuantity"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_drinkDetailsFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.brewbuddy.presentation.orders.PaymentFragment"
+        android:label="payment">
+        <argument
+            android:name="drinkId"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="quantity"
+            app:argType="integer" />
+        <argument
+            android:name="price"
+            app:argType="string" />
+    </fragment>
+
 
 </navigation>
