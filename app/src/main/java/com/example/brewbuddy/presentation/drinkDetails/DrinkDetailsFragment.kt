@@ -37,7 +37,11 @@ class DrinkDetailsFragment : Fragment() {
         viewModel.drink.observe(viewLifecycleOwner) { drink ->
             binding.title.text = drink.title
             binding.subtitle.text = drink.description
-            Glide.with(this).load(drink.image).into(binding.drinkImage)
+            Glide.with(requireContext())
+                .load(drink.image)
+                .placeholder(android.R.drawable.ic_menu_report_image)
+                .centerCrop()
+                .into(binding.drinkImage)
         }
 
         viewModel.quantity.observe(viewLifecycleOwner) { qty ->
@@ -63,7 +67,7 @@ binding.btnBuyNow.setOnClickListener {
         .actionDrinkDetailsFragmentToPaymentFragment(
             drinkId = args.drinkId,
             title=args.drinkTitle,
-            quantity=args.drinkQuantity,
+            quantity= viewModel.quantity.value ?: 1,
             price = args.drinkPrice,
             imageUrl = args.image
         )

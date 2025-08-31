@@ -140,11 +140,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateToBestSellerDetails(bestSeller: Coffee) {
         // Navigate to best seller details
-         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(
-             bestSeller.id,
-             bestSeller.title,
-             bestSeller.price,
-             bestSeller.image,
+         findNavController().navigate(
+             HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(
+                 bestSeller.id,
+                 bestSeller.title,
+                 bestSeller.price,
+                 bestSeller.image,
+             )
          )
     }
 

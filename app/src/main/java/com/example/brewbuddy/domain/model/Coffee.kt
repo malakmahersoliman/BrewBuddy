@@ -8,4 +8,5 @@ data class Coffee(
     val image: String
 ) {
     var price: String = "$5.00"
+    val name: String get() = title
 }
