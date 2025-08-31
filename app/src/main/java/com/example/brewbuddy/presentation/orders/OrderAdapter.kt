@@ -14,6 +14,7 @@ import com.example.brewbuddy.R
 import com.example.brewbuddy.domain.model.Order
 import com.google.android.material.imageview.ShapeableImageView
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 class OrderAdapter(
@@ -71,15 +72,13 @@ class OrderAdapter(
 
     override fun getItemCount(): Int = order.size
 
-    private fun formatDate(dateString: String): String {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    private fun formatDate(date: Date): String {
         val outputFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
-
         return try {
-            val date = inputFormat.parse(dateString)
-            date?.let { outputFormat.format(it) } ?: dateString
+            outputFormat.format(date)
         } catch (e: Exception) {
-            dateString // Return original string if parsing fails
+            // Fallback: return timestamp or simple format
+            SimpleDateFormat("dd/MM", Locale.getDefault()).format(Date())
         }
     }
 }

@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.brewbuddy.data.orderdb.OrderEntity
 import com.example.brewbuddy.databinding.FragmentPaymentBinding
+import com.example.brewbuddy.domain.model.Order
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Date
 
 @AndroidEntryPoint
 class PaymentFragment : Fragment() {
@@ -28,11 +30,12 @@ class PaymentFragment : Fragment() {
 
         binding.placeOrderButton.setOnClickListener {
             args?.let {
-                val order = OrderEntity(
+                val order = Order(
+                    id = it.drinkId,
                     quantity = it.quantity,
                     name = it.title ?: "",
                     imageUrl = it.imageUrl,
-                    date = System.currentTimeMillis()
+                    date = Date(System.currentTimeMillis())
                 )
 
                 viewModel.addOrder(order)

@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.brewbuddy.R
@@ -90,6 +91,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+
+
     }
 
     private fun updateBestSellerUI(bestSeller: Coffee) {
@@ -137,7 +140,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateToBestSellerDetails(bestSeller: Coffee) {
         // Navigate to best seller details
-        // findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(bestSeller.id))
+         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(
+             bestSeller.id,
+             bestSeller.title,
+             bestSeller.price,
+             bestSeller.image,
+         )
     }
 
     private fun navigateToRecommendationDetails(recommendation: Coffee) {
