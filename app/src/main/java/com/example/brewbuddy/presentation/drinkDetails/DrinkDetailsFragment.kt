@@ -11,7 +11,10 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.brewbuddy.R
 import com.example.brewbuddy.databinding.FragmentDrinkDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
+
+@AndroidEntryPoint
 class DrinkDetailsFragment : Fragment() {
 
     private var _binding: FragmentDrinkDetailsBinding? = null
