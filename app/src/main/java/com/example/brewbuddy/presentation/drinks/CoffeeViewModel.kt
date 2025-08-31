@@ -40,8 +40,8 @@ class CoffeeViewModel @Inject constructor(
     fun setCoffeeType(type: CoffeeType) {
         currentType = type
         _coffeeList.value = when (type) {
-            CoffeeType.HOT -> _hotList.value
-            CoffeeType.COLD -> _coldList.value
+            CoffeeType.HOT -> _hotList.value ?: emptyList()
+            CoffeeType.COLD -> _coldList.value ?: emptyList()
         }
     }
 

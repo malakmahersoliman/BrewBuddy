@@ -47,4 +47,7 @@ class FavoritesRepositoryImpl @Inject constructor(
     override suspend fun removeById(id: Int) {
         dao.removeFavorite(id)
     }
+    override suspend fun isFavorite(id: Int): Boolean {
+        return dao.isFavorite(id)
+    }
 }

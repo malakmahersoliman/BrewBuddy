@@ -6,7 +6,7 @@ import com.example.brewbuddy.data.mappers.toCoffee
 import com.example.brewbuddy.domain.repository.CoffeeRepository
 import javax.inject.Inject
 
-class CoffeeRepoImpl @Inject constructor(
+class CoffeeRepositoryImpl @Inject constructor(
     private val api: ApiManager
 ) : CoffeeRepository {
     override suspend fun getColdCoffee(): List<Coffee> {

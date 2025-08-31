@@ -8,4 +8,5 @@ interface FavoritesRepository {
     val favorites: Flow<List<Favorite>>
     suspend fun add(drink: Drink)
     suspend fun removeById(id: Int)
+    suspend fun isFavorite(id: Int): Boolean
 }
