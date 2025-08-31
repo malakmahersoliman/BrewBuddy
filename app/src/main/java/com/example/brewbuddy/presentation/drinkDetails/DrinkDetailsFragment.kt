@@ -65,6 +65,7 @@ binding.btnBuyNow.setOnClickListener {
             title=args.drinkTitle,
             quantity=args.drinkQuantity,
             price = args.drinkPrice,
+            imageUrl = args.image
         )
     findNavController().navigate(action)
 }
