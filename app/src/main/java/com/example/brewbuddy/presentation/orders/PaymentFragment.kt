@@ -1,11 +1,11 @@
 package com.example.brewbuddy.presentation.orders
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.brewbuddy.data.orderdb.OrderEntity
 import com.example.brewbuddy.databinding.FragmentPaymentBinding
 import com.example.brewbuddy.domain.model.Order
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,11 +16,15 @@ class PaymentFragment : Fragment() {
 
     private val viewModel: PaymentViewModel by viewModels()
     private lateinit var binding: FragmentPaymentBinding
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentPaymentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentPaymentBinding.bind(view)
-
         val args = arguments?.let { PaymentFragmentArgs.fromBundle(it) }
 
         binding.orderItemQuantity.text = "${args?.quantity}x"
