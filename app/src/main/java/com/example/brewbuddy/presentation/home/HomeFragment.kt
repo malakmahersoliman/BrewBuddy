@@ -1,43 +1,35 @@
 package com.example.brewbuddy.presentation.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.brewbuddy.R
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private var param1: String = ""
-    private var param2: String = ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1, "")
-            param2 = it.getString(ARG_PARAM2, "")
-        }
-    }
+    private val vm: HomeViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.fragment_home, container, false)
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val tvGreeting = view.findViewById<TextView>(R.id.tvGreeting)
+
+        // Collect greeting
+        viewLifecycleOwner.lifecycleScope.launch {
+            vm.greeting.collect { tvGreeting.text = it }
+        }
+
+        // TODO: if you already have a RecyclerView for items,
+        // collect vm.items here and submit to your adapter.
     }
 }
