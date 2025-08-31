@@ -21,5 +21,4 @@ object ApiManager {
             .build()
         return client
     }
-
 }
