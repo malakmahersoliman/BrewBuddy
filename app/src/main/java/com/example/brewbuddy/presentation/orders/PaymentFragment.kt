@@ -42,6 +42,7 @@ class PaymentFragment : Fragment() {
                     quantity = it.quantity,
                     name = it.title ?: "",
                     imageUrl = it.imageUrl,
+                    description = null,
                     date = Date(System.currentTimeMillis())
                 )
 

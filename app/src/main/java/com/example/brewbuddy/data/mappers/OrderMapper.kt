@@ -9,6 +9,7 @@ fun OrderEntity.toDomain(): Order {
         name = this.name,
         quantity = this.quantity,
         date = this.date,
+        description = this.description,
         imageUrl = this.imageUrl
     )
 }
@@ -19,6 +20,7 @@ fun Order.toEntity(): OrderEntity {
         name = this.name,
         quantity = this.quantity,
         date = this.date,
+        description = this.description,
         imageUrl = this.imageUrl
     )
 }

@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +18,10 @@ import com.google.android.material.imageview.ShapeableImageView
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import androidx.navigation.fragment.findNavController
 
 class OrderAdapter(
+    private val onDetailsClick: (Order) -> Unit,
     private val order:  MutableList<Order> = mutableListOf()
 ): RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
@@ -43,9 +47,6 @@ class OrderAdapter(
                 .placeholder(R.drawable.placeholder_drink)
                 .into(drinkImage)
 
-
-
-
             quantity.text = "${order.quantity}x"
             drinkName.text = order.name
 
@@ -53,7 +54,11 @@ class OrderAdapter(
             orderDate.text = formatDate(order.date)
 
             details.setOnClickListener {
-                // onDetailsClick(order)
+                 onDetailsClick(order)
+            }
+
+            itemView.setOnClickListener {
+                onDetailsClick(order)
             }
         }
 
