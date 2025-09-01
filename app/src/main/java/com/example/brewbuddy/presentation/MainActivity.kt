@@ -90,6 +90,10 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigation.visibility = View.VISIBLE
                     ToolbarManager.updateToolbarTitle(this, "Your favorite drinks to lighten up your day")
                 }
+
+                R.id.drinkDetailsFragment -> {
+                    binding.toolbar.root.visibility = View.GONE
+                }
             }
         }
     }
