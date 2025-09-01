@@ -7,7 +7,7 @@
         android:title="@string/tab_home" />
 
     <item
-        android:id="@+id/menuFragment"
+        android:id="@+id/DrinkMenuFragment"
         android:icon="@drawable/ic_menu"
         android:title="@string/tab_menu" />
 

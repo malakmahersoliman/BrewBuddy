@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     )
                 }
 
-                R.id.menuFragment -> {
+                R.id.DrinkMenuFragment -> {
                     binding.toolbar.root.visibility = View.VISIBLE
                     binding.bottomNavigation.visibility = View.VISIBLE
                     ToolbarManager.updateToolbarTitle(this, "What would you like to drink today?")

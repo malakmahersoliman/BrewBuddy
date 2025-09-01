@@ -37,11 +37,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/menuFragment"
-        android:name="com.example.brewbuddy.presentation.drinks.DrinkMenuFragment"
-        android:label="@string/tab_menu" />
-
-    <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.brewbuddy.presentation.favorites.FavoritesFragment"
         android:label="@string/tab_favorites" />
@@ -61,9 +56,10 @@
         android:name="com.example.brewbuddy.presentation.drinks.DrinkMenuFragment"
         android:label="Drinks" >
         <action
-            android:id="@+id/action_drinkMenuFragment_to_favoriteFragment"
-            app:destination="@id/favoriteDetailsFragment" />
+            android:id="@+id/actionDrinkMenuFragmentToProductDetailFragment"
+            app:destination="@id/drinkDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/favoriteDetailsFragment"
         android:name="com.example.brewbuddy.presentation.drinkDetails.DrinkDetailsFragment"

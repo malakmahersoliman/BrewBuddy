@@ -9,7 +9,7 @@ import com.example.brewbuddy.databinding.CoffeeItemBinding
 
 class CoffeeAdapter(
     private var items: List<Coffee>,
-    private val onAddClick: () -> Unit
+    private val onAddClick: (drink: Coffee) -> Unit
 ) : RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder>() {
 
 
@@ -27,7 +27,7 @@ class CoffeeAdapter(
         Glide.with( holder.binding.ivCoffee.context).load(item.image).into( holder.binding.ivCoffee)
 
         holder. binding.btnAdd.setOnClickListener {
-            onAddClick()
+            onAddClick(item)
         }
 
 
