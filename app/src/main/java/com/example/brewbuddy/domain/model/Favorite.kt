@@ -5,5 +5,5 @@ data class Favorite(
     val name: String,
     val image: String?,
     val description: String?,
-    val price: Double = 0.0
+    val price: String = "0.0"
 )

@@ -6,7 +6,7 @@ data class Drink(
     val description: String,
     val image: String,
     val ingredients: List<String>,
-    val price: Double
+    val price: String
 ) {
 
     val name: String get() = title

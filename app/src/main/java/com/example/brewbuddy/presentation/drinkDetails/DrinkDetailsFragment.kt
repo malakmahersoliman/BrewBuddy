@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.brewbuddy.R
 import com.example.brewbuddy.databinding.FragmentDrinkDetailsBinding
+import com.example.brewbuddy.domain.model.Drink
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 
@@ -63,8 +65,18 @@ class DrinkDetailsFragment : Fragment() {
                 binding.favourite.setImageResource(R.drawable.ic_favorite_border)
             }
         }
+        val drink = Drink(
+            id = args.drinkId,
+            title = args.drinkTitle,
+            image = args.image,
+            price = args.drinkPrice,
+            description = args.description,
+            ingredients = emptyList()
+        )
+
         binding.favourite.setOnClickListener {
-            viewModel.toggleFavorite()
+            viewModel.toggleFavorite(drink)
+            Toast.makeText(requireContext(),"Done",Toast.LENGTH_SHORT).show()
         }
 binding.btnBuyNow.setOnClickListener {
     val action = DrinkDetailsFragmentDirections

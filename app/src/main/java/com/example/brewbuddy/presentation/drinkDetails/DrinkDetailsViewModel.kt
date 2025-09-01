@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.brewbuddy.domain.model.Drink
 import com.example.brewbuddy.domain.repository.FavoritesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -40,13 +41,13 @@ class DrinkDetailsViewModel @Inject constructor(
             _quantity.value = current - 1
         }
     }
-    fun toggleFavorite() {
+    fun toggleFavorite(drink: Drink) {
         viewModelScope.launch {
             if (_isFavorite.value == true) {
-                repo.removeById(currentDrinkId)
+                repo.removeById(drink.id)
                 _isFavorite.value = false
             } else {
-                // You'll need to pass the drink data to add to favorites
+                repo.add(drink) // هنا هيضيف الـ Drink كـ Favorite
                 _isFavorite.value = true
             }
         }

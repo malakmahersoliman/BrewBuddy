@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.brewbuddy.databinding.FragmentPaymentBinding
 import com.example.brewbuddy.domain.model.Order
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,13 +46,23 @@ class PaymentFragment : Fragment() {
                     description = null,
                     date = Date(System.currentTimeMillis())
                 )
-
                 viewModel.addOrder(order)
+                findNavController().popBackStack()
             }
         }
         binding.editButton.setOnClickListener {
             val dialog = EditAddressDialogFragment()
             dialog.show(parentFragmentManager, "edit_address")
+        }
+        binding.cancelButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        parentFragmentManager.setFragmentResultListener(
+            "edit_address_request",
+            viewLifecycleOwner
+        ) { _, bundle ->
+            val newAddress = bundle.getString("new_address")
+            binding.addressLabel.text = newAddress
         }
     }
 }

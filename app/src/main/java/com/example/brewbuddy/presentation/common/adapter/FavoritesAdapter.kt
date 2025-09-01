@@ -27,9 +27,7 @@ class FavoritesAdapter(
         fun bind(item: Drink) = with(binding) {
             // Set drink name
             drinkName.text = item.name
-
-            // Set price with formatter
-            drinkPrice.text = Formatters.formatPrice(item.price)
+            drinkPrice.text = item.price
 
             // Placeholder image until API fetch
             drinkImage.setImageDrawable(

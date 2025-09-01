@@ -15,7 +15,7 @@ import com.example.brewbuddy.data.db.converters.DateConverter
 
 @Database(
     entities = [CoffeeEntity::class, FavoriteEntity::class, OrderEntity::class],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 @TypeConverters(DateConverter::class)

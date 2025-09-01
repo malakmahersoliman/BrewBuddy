@@ -6,55 +6,63 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <!-- Drink Image -->
         <ImageView
             android:id="@+id/drinkImage"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
-            android:background="@drawable/rounded_image_bg"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Drink Name -->
-        <TextView
-            android:id="@+id/drinkName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/drinkImage"
-            android:layout_margin="8dp"
-            android:text="Drink Name"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:background="@android:color/transparent"/>
-
-        <!-- Drink Price -->
         <TextView
             android:id="@+id/drinkPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/drinkImage"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:text="Rp 24.000"
-            android:textColor="@color/brown_dark"
+            android:layout_margin="8dp"
+            android:text="Drink Name"
+            android:textColor="#FCF2D9"
             android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/drinkImage"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Drink Price -->
 
         <!-- Favorite Button -->
+
+        <TextView
+            android:id="@+id/drinkName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Rp 24.000"
+            android:textColor="#FCF2D9"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/drinkImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/drinkImage"
+            app:layout_constraintVertical_bias="0.659" />
+
         <ImageButton
             android:id="@+id/removeFavorite"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_alignBottom="@id/drinkPrice"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
+            android:layout_margin="8dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_remove_favorite"
             android:src="@drawable/ic_favorite_filled"
-            android:tint="@color/red"
-            android:contentDescription="@string/cd_remove_favorite"/>
-    </RelativeLayout>
+            app:layout_constraintEnd_toEndOf="@id/drinkImage"
+            app:layout_constraintTop_toTopOf="@id/drinkPrice" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

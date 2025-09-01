@@ -34,15 +34,11 @@ class DrinkAdapter(
             //  Set drink name
             drinkName.text = item.drink.name
 
-            // Format and set price
-            drinkPrice.text = Formatters.formatPrice(item.drink.price)
-
-            // Placeholder image (replace later with Glide/Picasso when API is ready)
+            drinkPrice.text = item.drink.price
             drinkImage.setImageDrawable(
                 ContextCompat.getDrawable(root.context, R.drawable.placeholder_drink)
             )
 
-            //  Handle favorite state
             favoriteIcon.setImageResource(
                 if (item.isFavorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border
             )
@@ -50,7 +46,7 @@ class DrinkAdapter(
                 if (item.isFavorite) R.string.cd_unfavorite else R.string.cd_favorite
             )
 
-            //  Toggle favorite on click
+
             favoriteIcon.setOnClickListener {
                 onToggleFavorite(item.drink, !item.isFavorite)
             }
