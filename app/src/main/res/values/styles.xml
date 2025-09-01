@@ -23,7 +23,7 @@
 
     <style name="recently">
         <item name="android:textSize">11sp</item>
-        <item name="android:textColor">#834D1E</item>
+
     </style>
 
     <style name="past_orders">
