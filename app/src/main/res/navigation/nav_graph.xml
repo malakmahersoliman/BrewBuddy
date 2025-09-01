@@ -31,27 +31,10 @@
         android:id="@+id/homeFragment"
         android:name="com.example.brewbuddy.presentation.home.HomeFragment"
         android:label="@string/tab_home">
-        <argument
-            android:name="drink_id"
-            app:argType="integer" />
-        <argument
-            android:name="drinkTitle"
-            app:argType="string" />
-        <argument
-            android:name="drinkPrice"
-            app:argType="string" />
-<!--        <argument-->
-<!--            android:name="image"-->
-<!--            app:argType="string" />-->
         <action
             android:id="@+id/actionHomeFragmentToProductDetailFragment"
             app:destination="@id/drinkDetailsFragment"/>
     </fragment>
-
-    <fragment
-        android:id="@+id/menuFragment"
-        android:name="com.example.brewbuddy.presentation.drinks.DrinkMenuFragment"
-        android:label="@string/tab_menu" />
 
     <fragment
         android:id="@+id/favoritesFragment"
@@ -61,7 +44,11 @@
     <fragment
         android:id="@+id/ordersFragment"
         android:name="com.example.brewbuddy.presentation.orders.OrdersFragment"
-        android:label="@string/tab_orders" />
+        android:label="@string/tab_orders">
+        <action
+            android:id="@+id/actionOrderFragmentToProductDetailFragment"
+            app:destination="@id/drinkDetailsFragment"/>
+    </fragment>
 
 
     <fragment
@@ -69,9 +56,10 @@
         android:name="com.example.brewbuddy.presentation.drinks.DrinkMenuFragment"
         android:label="Drinks" >
         <action
-            android:id="@+id/action_drinkMenuFragment_to_favoriteFragment"
-            app:destination="@id/favoriteDetailsFragment" />
+            android:id="@+id/actionDrinkMenuFragmentToProductDetailFragment"
+            app:destination="@id/drinkDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/favoriteDetailsFragment"
         android:name="com.example.brewbuddy.presentation.drinkDetails.DrinkDetailsFragment"

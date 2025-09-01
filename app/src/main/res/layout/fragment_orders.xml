@@ -47,9 +47,11 @@
             android:gravity="center"
             android:text="@string/recently"
             android:textAppearance="@style/recently"
+            android:textColor="@drawable/selector_text_color"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="@drawable/option_selector"  />
+            android:background="@drawable/option_selector"
+            />
 
         <TextView
             android:id="@+id/opt_2"
@@ -59,10 +61,13 @@
             android:fontFamily="@font/inter"
             android:gravity="center"
             android:text="@string/past_orders"
+            android:textColor="@drawable/selector_text_color"
             android:textAppearance="@style/past_orders"
             android:clickable="true"
             android:focusable="true"
-            android:background="@drawable/option_selector" />
+            android:background="@drawable/option_selector"   />
+<!--            android:duplicateParentState="true"-->
+
 
 
 

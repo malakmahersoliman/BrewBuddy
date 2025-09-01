@@ -10,8 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewbuddy.databinding.FragmentOrdersBinding
+import com.example.brewbuddy.domain.model.Order
+import com.example.brewbuddy.presentation.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -46,11 +49,27 @@ class OrdersFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        orderAdapter = OrderAdapter()
+        orderAdapter = OrderAdapter(
+            onDetailsClick = { order ->
+                navigateToOrderDetails(order)
+            }
+        )
+
         binding.rvOrders.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = orderAdapter
         }
+    }
+
+    private fun navigateToOrderDetails(order: Order) {
+        val action = OrdersFragmentDirections.actionOrderFragmentToProductDetailFragment(
+            drinkId = order.id,
+            drinkTitle = order.name,
+            drinkPrice = order.price.toString(),
+            description = order.description ?: "",
+            image = order.imageUrl ?: ""
+        )
+        findNavController().navigate(action)
     }
 
     private fun setupListeners() {

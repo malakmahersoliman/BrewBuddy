@@ -10,5 +10,6 @@ data class OrderEntity(
     val name: String,
     val quantity: Int,
     val date: Date,
+    val description: String?,
     val imageUrl: String
 )

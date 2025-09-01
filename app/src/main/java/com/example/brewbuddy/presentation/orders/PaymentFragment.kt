@@ -32,8 +32,8 @@ class PaymentFragment : Fragment() {
 
         binding.orderItemQuantity.text = "${args?.quantity}x"
         binding.orderItemName.text = args?.title
-        binding.orderItemPrice.text = "Rp ${args?.price}"
-        binding.totalValue.text = "Rp ${args?.price}"
+        binding.orderItemPrice.text = "${args?.price}"
+        binding.totalValue.text = "${args?.price}"
 
         binding.placeOrderButton.setOnClickListener {
             args?.let {
@@ -42,6 +42,7 @@ class PaymentFragment : Fragment() {
                     quantity = it.quantity,
                     name = it.title ?: "",
                     imageUrl = it.imageUrl,
+                    description = null,
                     date = Date(System.currentTimeMillis())
                 )
 

@@ -7,5 +7,8 @@ data class Order(
     val name: String,
     val quantity: Int,
     val date: Date,
+    val description:String?,
     val imageUrl: String
-)
+){
+    val price: String = "$5.00"
+}

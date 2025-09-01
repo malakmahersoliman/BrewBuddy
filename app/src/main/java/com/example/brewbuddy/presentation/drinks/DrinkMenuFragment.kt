@@ -5,19 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewbuddy.R
 import com.example.brewbuddy.data.db.CoffeeDatabase
-import com.example.brewbuddy.data.db.coffeedb.CoffeeEntity
 import com.example.brewbuddy.databinding.FragmentDrinkMenuBinding
 import com.example.brewbuddy.domain.model.Coffee
+import com.example.brewbuddy.presentation.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DrinkMenuFragment : Fragment() {
@@ -43,7 +40,8 @@ class DrinkMenuFragment : Fragment() {
 
         db = CoffeeDatabase.getDatabase(requireContext())
 
-        adapter = CoffeeAdapter(emptyList()) {
+        adapter = CoffeeAdapter(emptyList()) { drink ->
+            navigateToDrinkDetails(drink)
         }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -79,16 +77,6 @@ class DrinkMenuFragment : Fragment() {
         }
     }
 
-    private fun filterList(query: String?) {
-        val currentList = adapter.currentList()
-        val filtered = if (query.isNullOrEmpty()) {
-            currentList
-        } else {
-            currentList.filter { it.title.contains(query, ignoreCase = true) }
-        }
-        adapter.updateList(filtered)
-    }
-
     private fun highlightButton(isCold: Boolean) {
         if (isCold) {
             binding.btnCold.setBackgroundColor(requireContext().getColor(R.color.select_bt))
@@ -107,5 +95,18 @@ class DrinkMenuFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun navigateToDrinkDetails(drink: Coffee) {
+        // Navigate to best seller details
+        findNavController().navigate(
+            DrinkMenuFragmentDirections.actionDrinkMenuFragmentToProductDetailFragment(
+                drink.id,
+                drink.title,
+                drink.price,
+                drink.description,
+                drink.image,
+            )
+        )
     }
 }

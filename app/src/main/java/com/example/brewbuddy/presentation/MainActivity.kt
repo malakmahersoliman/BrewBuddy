@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         // Handle system bar insets
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, 0, systemBars.right, 0)
             insets
         }
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     )
                 }
 
-                R.id.menuFragment -> {
+                R.id.DrinkMenuFragment -> {
                     binding.toolbar.root.visibility = View.VISIBLE
                     binding.bottomNavigation.visibility = View.VISIBLE
                     ToolbarManager.updateToolbarTitle(this, "What would you like to drink today?")
@@ -89,6 +89,10 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.root.visibility = View.VISIBLE
                     binding.bottomNavigation.visibility = View.VISIBLE
                     ToolbarManager.updateToolbarTitle(this, "Your favorite drinks to lighten up your day")
+                }
+
+                R.id.drinkDetailsFragment -> {
+                    binding.toolbar.root.visibility = View.GONE
                 }
             }
         }
