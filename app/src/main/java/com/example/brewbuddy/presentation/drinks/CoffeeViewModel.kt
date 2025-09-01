@@ -27,8 +27,8 @@ class CoffeeViewModel @Inject constructor(
 
     fun fetchCoffee() {
         viewModelScope.launch {
-            val hot = getHotCoffeeUseCase().map { it.apply { price = "Rp ${(200..500).random()}" } }
-            val cold = getColdCoffeeUseCase().map { it.apply { price = "Rp ${(200..500).random()}" } }
+            val hot = getHotCoffeeUseCase().map { it.apply { price = "$ ${(200..500).random()}" } }
+            val cold = getColdCoffeeUseCase().map { it.apply { price = "$ ${(200..500).random()}" } }
 
             _hotList.value = hot
             _coldList.value = cold

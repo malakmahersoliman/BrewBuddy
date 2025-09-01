@@ -4,20 +4,24 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
+        android:backgroundTint="@android:color/transparent"
         android:title="@string/tab_home" />
 
     <item
         android:id="@+id/DrinkMenuFragment"
         android:icon="@drawable/ic_menu"
+        android:backgroundTint="@android:color/transparent"
         android:title="@string/tab_menu" />
 
     <item
         android:id="@+id/favoritesFragment"
         android:icon="@drawable/ic_favorite_border"
+        android:backgroundTint="@android:color/transparent"
         android:title="@string/tab_favorites" />
 
     <item
         android:id="@+id/ordersFragment"
         android:icon="@drawable/ic_orders"
+        android:backgroundTint="@android:color/transparent"
         android:title="@string/tab_orders" />
 </menu>
