@@ -13,7 +13,6 @@ import com.example.brewbuddy.R
 import com.example.brewbuddy.data.db.CoffeeDatabase
 import com.example.brewbuddy.databinding.FragmentDrinkMenuBinding
 import com.example.brewbuddy.domain.model.Coffee
-import com.example.brewbuddy.presentation.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
